@@ -45,7 +45,6 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func main() {
@@ -54,18 +53,68 @@ func main() {
 	fmt.Println(value)
 }
 
-func removeDuplicates(nums []int) int {
-	hash := make(map[int]bool)
-	result := len(nums)
+// func removeDuplicates(nums []int) int {
+// 	hash := make(map[int]bool)
+// 	result := len(nums)
 
-	for i, num := range nums {
-		if hash[num] {
-			nums[i] = 101
-			result--
+// 	for i, num := range nums {
+// 		if hash[num] {
+// 			nums[i] = 101
+// 			result--
+// 		} else {
+// 			hash[num] = true
+// 		}
+// 	}
+// 	sort.Ints(nums)
+// 	return result
+// }
+
+/*
+seen 4
+
+12340203144
+    a
+          r
+
+
+0,0,1,1,1,2,2,3,3,4
+a
+  r
+
+seen =
+a = 0
+r = 1
+
+until r < len
+is the r seen?
+	- if yes
+		r++
+	- if not:
+		seen = r
+		swap
+		r++
+		a++
+
+
+*/
+
+func removeDuplicates(nums []int) int {
+
+	seen := nums[0]
+
+	a := 0
+	r := 0
+
+	for r < len(nums) {
+		if nums[r] == seen && r != 0 {
+			r++
 		} else {
-			hash[num] = true
+			seen = nums[r]
+			nums[a], nums[r] = nums[r], nums[a]
+			r++
+			a++
 		}
 	}
-	sort.Ints(nums)
-	return result
+
+	return a
 }

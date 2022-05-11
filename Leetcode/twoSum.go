@@ -92,3 +92,39 @@ func indexOf(num int, arr []int) int {
 	}
 	return -1
 }
+
+// func twoSum(nums []int, target int) []int {
+// 	seen := make(map[int]int, 2)
+// 	indeces := make([]int, 2)
+// 	var complement int
+
+// 	for idx, num := range nums {
+// 			complement = target - num
+// 			if complementIdx, ok := seen[complement]; ok {
+// 					indeces[0] = complementIdx
+// 					indeces[1] = idx
+// 					break
+// 			} else {
+// 					seen[num] = idx
+// 			}
+// 	}
+// 	return indeces
+// }
+
+// func twoSum(nums []int, target int) []int {
+// 	m := make(map[int]int)
+// 	output := make([]int, 2)
+
+// 	for idx1, val1 := range nums {
+// 			delta := target - val1
+// 			idx2, present := m[delta]
+
+// 			if present {
+// 					output[0], output[1] = idx1, idx2
+// 					break
+// 			} else {
+// 					m[val1] = idx1
+// 			}
+// 	}
+// 	return output
+// }
